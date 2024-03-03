@@ -1,18 +1,20 @@
 spring:
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/mobilele
-    username: postgres
-    password: Abcd1234
+    url: jdbc:postgresql://${POSTGRE_HOST:localhost}:5432/mobilele
+    username: ${POSTGRE_USER:postgres}
+    password: ${POSTGRE_PASSWORD:Abcd1234}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
 #    defer-datasource-initialization: true
 #  mvc:
 #    hiddenmethod:
 #      filter:
 #        enabled: true
-#  sql:
-#    init:
-#      mode: never
+  sql:
+    init:
+      mode: never
+
+default.admin.pass: topsecret
